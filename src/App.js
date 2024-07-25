@@ -7,9 +7,12 @@ function App() {
   const setCookie = async () => {
     try {
       // Make a GET request to the backend to set the cookie
-      const response = await axios.get("http://localhost:3003/", {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        "https://backend-flame-psi.vercel.app/",
+        {
+          withCredentials: true,
+        }
+      );
       console.log("Response from server:", response.data);
     } catch (error) {
       console.error("Error setting cookie:", error);
@@ -24,9 +27,12 @@ function App() {
   const makeApiCallWithCookie = async () => {
     try {
       // Make a GET request with credentials
-      const response = await axios.get("http://localhost:3003/endpoint", {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        "https://backend-flame-psi.vercel.app/endpoint",
+        {
+          withCredentials: true,
+        }
+      );
       console.log("Response from server with cookie:", response.data);
     } catch (error) {
       console.error("Error making API call with cookie:", error);
