@@ -11,6 +11,7 @@ function App() {
           withCredentials: true,
         }
       );
+      localStorage.setItem("fetched", true);
       console.log("Response from server:", response.data);
     } catch (error) {
       console.error("Error setting cookie:", error);
@@ -18,7 +19,9 @@ function App() {
   };
 
   useEffect(() => {
-    setCookie();
+    if (!localStorage.getItem("fetched")) {
+      setCookie();
+    }
   }, []);
 
   const makeApiCallWithCookie = async () => {
