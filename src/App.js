@@ -3,12 +3,10 @@ import axios from "axios";
 import "./App.css";
 
 function App() {
-  // Function to make an API call to set the cookie
   const setCookie = async () => {
     try {
-      // Make a GET request to the backend to set the cookie
       const response = await axios.get(
-        "https://backend-flame-psi.vercel.app/",
+        "https://backend-flame-psi.vercel.app/setCookie",
         {
           withCredentials: true,
         }
@@ -23,17 +21,16 @@ function App() {
     setCookie();
   }, []);
 
-  // Function to make an API call with the cookie
   const makeApiCallWithCookie = async () => {
     try {
-      // Make a GET request with credentials
       const response = await axios.get(
-        "https://backend-flame-psi.vercel.app/endpoint",
+        "https://backend-flame-psi.vercel.app/getCookie",
         {
           withCredentials: true,
         }
       );
       console.log("Response from server with cookie:", response.data);
+      alert(response.data.cookies.token);
     } catch (error) {
       console.error("Error making API call with cookie:", error);
     }
